@@ -1,4 +1,4 @@
-﻿namespace DiamondAuthServer.Domain
+﻿namespace sln.Domain
 {
     public class DomainBuilder
     {

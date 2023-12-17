@@ -1,4 +1,4 @@
-﻿namespace DiamondAuthServer.Persistence
+﻿namespace sln.Persistence
 {
     public class PersistenceBuilder
     {
