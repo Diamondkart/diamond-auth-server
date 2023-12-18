@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondAuthServer.Persistence", "src\DiamondAuthServer.Persistence\DiamondAuthServer.Persistence.csproj", "{D7986225-E167-45C9-8305-A7A78D62852B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiamondAuthServer.Persistence", "src\DiamondAuthServer.Persistence\DiamondAuthServer.Persistence.csproj", "{D7986225-E167-45C9-8305-A7A78D62852B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondAuthServer.ApplicationCore", "src\DiamondAuthServer.ApplicationCore\DiamondAuthServer.ApplicationCore.csproj", "{556602CD-5EED-4329-A11B-3BCC50394856}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiamondAuthServer.ApplicationCore", "src\DiamondAuthServer.ApplicationCore\DiamondAuthServer.ApplicationCore.csproj", "{556602CD-5EED-4329-A11B-3BCC50394856}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondAuthServer.Domain", "src\DiamondAuthServer.Domain\DiamondAuthServer.Domain.csproj", "{3ED5310E-BB4F-4C7B-881C-243D2752DF93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiamondAuthServer.Domain", "src\DiamondAuthServer.Domain\DiamondAuthServer.Domain.csproj", "{3ED5310E-BB4F-4C7B-881C-243D2752DF93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondAuthServer.WebAPI", "src\DiamondAuthServer.WebAPI\DiamondAuthServer.WebAPI.csproj", "{A869BA02-0778-40EF-9277-EE9CC146715E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,8 +29,15 @@ Global
 		{3ED5310E-BB4F-4C7B-881C-243D2752DF93}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3ED5310E-BB4F-4C7B-881C-243D2752DF93}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ED5310E-BB4F-4C7B-881C-243D2752DF93}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A869BA02-0778-40EF-9277-EE9CC146715E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A869BA02-0778-40EF-9277-EE9CC146715E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A869BA02-0778-40EF-9277-EE9CC146715E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A869BA02-0778-40EF-9277-EE9CC146715E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {94A257E1-A431-428E-8F1B-D1C66D88E341}
 	EndGlobalSection
 EndGlobal

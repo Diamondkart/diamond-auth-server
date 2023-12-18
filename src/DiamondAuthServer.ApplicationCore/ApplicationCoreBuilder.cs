@@ -1,4 +1,4 @@
-﻿namespace sln.ApplicationCore
+﻿namespace DiamondAuthServer.ApplicationCore
 {
     public class ApplicationCoreBuilder
     {
