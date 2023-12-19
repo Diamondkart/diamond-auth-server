@@ -1,7 +1,9 @@
-using DiamondAuthServer.WebAPI.Extensions;
 using DiamondAuthServer.Persistence;
+using DiamondAuthServer.WebAPI.Extensions;
+using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Host.ConfigureAppConfiguration(c => c.BuildConfiguration(args));
 
 // Add services to the container.
 
@@ -13,7 +15,19 @@ builder.Services.AddConnectionString(builder.Configuration);
 
 builder.Services.AddPersistenceBuilderServices();
 
+
 var app = builder.Build();
+
+app.Use(async (context, next) =>
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        /*var configuration = builder.Configuration;
+        var value=configuration.GetSection("RootConfiguration")["MigrationPath"];*/
+        await scope.UseMigrationScope();
+    }
+    await next();
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment() || app.Environment.IsLocal())

@@ -14,4 +14,8 @@
     <ProjectReference Include="..\DiamondAuthServer.Persistence\DiamondAuthServer.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="MigrationScripts\" />
+  </ItemGroup>
+
 </Project>
