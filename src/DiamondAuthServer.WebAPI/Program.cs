@@ -1,6 +1,7 @@
+using DiamondAuthServer.ApplicationCore;
+using DiamondAuthServer.Domain.Exceptions;
 using DiamondAuthServer.Persistence;
 using DiamondAuthServer.WebAPI.Extensions;
-using Microsoft.Extensions.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.ConfigureAppConfiguration(c => c.BuildConfiguration(args));
@@ -14,9 +15,15 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddConnectionString(builder.Configuration);
 
 builder.Services.AddPersistenceBuilderServices();
+builder.Services.AddApplicationCoreServices();
 
+builder.Services.UseFluentValidation();
+
+builder.Services.AddControllers()
+    .UseApiBehaviorOptions();
 
 var app = builder.Build();
+app.UseMiddleware<ExceptionMiddleWare>();
 
 app.Use(async (context, next) =>
 {

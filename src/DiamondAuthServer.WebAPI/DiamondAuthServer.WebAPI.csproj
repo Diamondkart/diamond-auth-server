@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DiamondAuthServer.ApplicationCore\DiamondAuthServer.ApplicationCore.csproj" />
     <ProjectReference Include="..\DiamondAuthServer.Persistence\DiamondAuthServer.Persistence.csproj" />
   </ItemGroup>
 
