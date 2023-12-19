@@ -27,9 +27,10 @@ namespace DiamondAuthServer.Domain.Exceptions
         private static int GetStatusCode(Exception exception) =>
         exception switch
         {
+            UnauthorizedAccessException => StatusCodes.Status401Unauthorized,
+            ApplicationException => StatusCodes.Status500InternalServerError,
+            EvolveException => StatusCodes.Status500InternalServerError,
             NotImplementedException => StatusCodes.Status501NotImplemented,
-            UnauthorizedAccessException => StatusCodes.Status501NotImplemented,
-            ApplicationException => StatusCodes.Status401Unauthorized,
             _ => StatusCodes.Status500InternalServerError
         };
 

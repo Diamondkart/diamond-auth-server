@@ -8,16 +8,16 @@
 
   <ItemGroup>
     <Folder Include="DbScript\EFCoreDbScript\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.1.24" />
-    <PackageReference Include="Evolve" Version="3.2.0" />
+    <PackageReference Include="Evolve" Version="3.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.14" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\DiamondAuthServer.ApplicationCore\DiamondAuthServer.ApplicationCore.csproj" />
     <ProjectReference Include="..\DiamondAuthServer.Domain\DiamondAuthServer.Domain.csproj" />
   </ItemGroup>
 
