@@ -3,6 +3,7 @@ using DiamondAuthServer.Domain.Exceptions;
 using DiamondAuthServer.Persistence;
 using DiamondAuthServer.WebAPI.Extensions;
 
+// start building configuration, host, etc ..
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.ConfigureAppConfiguration(c => c.BuildConfiguration(args));
 
@@ -23,15 +24,14 @@ builder.Services.AddControllers()
     .UseApiBehaviorOptions();
 
 var app = builder.Build();
-app.UseMiddleware<ExceptionMiddleWare>();
 
+// start middleware pipeline
+app.UseMiddleware<ExceptionMiddleWare>();
 app.Use(async (context, next) =>
 {
     using (var scope = app.Services.CreateScope())
     {
-        /*var configuration = builder.Configuration;
-        var value=configuration.GetSection("RootConfiguration")["MigrationPath"];*/
-        await scope.UseMigrationScope();
+        await scope.UseMigrationScope(true);
     }
     await next();
 });

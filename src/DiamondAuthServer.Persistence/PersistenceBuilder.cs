@@ -4,6 +4,7 @@ using DiamondAuthServer.Persistence.DbMigration.interfaces;
 using DiamondAuthServer.Persistence.DbMigration.RootConfigurations;
 using DiamondAuthServer.Persistence.DBStorage;
 using DiamondAuthServer.Persistence.Repositories;
+using DiamondAuthServer.Persistence.Repositories.Interfaces;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -20,7 +21,7 @@ namespace DiamondAuthServer.Persistence
         {
             services.AddScoped<IMigration, Migration>();
             services.AddScoped<IRootConfiguration, RootConfiguration>();
-            //services.AddScoped<IEvolveMigration, EvolveMigration>();
+            services.AddScoped<ISQLDatabase, SQLDatabase>();
             services.AddScoped<IAccountRespository, AccountRespository>();
             return services;
         }
@@ -31,21 +32,28 @@ namespace DiamondAuthServer.Persistence
             return services;
         }
 
-        private static IDbConnection GetAuthDBConnection(IConfiguration configuration)
+        // Use this when using connection string
+        private static IDbConnection GetAuthDBConnection(IConfiguration configuration, IServiceProvider serviceProvider, bool hasConnectionString = false)
         {
+            if (!hasConnectionString)
+            {
+                var sqlDatabase = serviceProvider.GetRequiredService<ISQLDatabase>();
+                return sqlDatabase.GetConnection();
+            }
             return new SqlConnection(configuration.GetConnectionString(AuthConstants.ConnectionStringName));
         }
 
-        public static async Task<bool> UseMigrationScope(this IServiceScope scope)
+        public static async Task<bool> UseMigrationScope(this IServiceScope scope, bool hasConnectionString=false)
         {
             var serviceProvider = scope.ServiceProvider;
             var rootConfiguration = serviceProvider.GetRequiredService<IRootConfiguration>();
             var configuration = serviceProvider.GetRequiredService<IConfiguration>();
             var migrationService = serviceProvider.GetRequiredService<IMigration>();
             var migrationPath = configuration.GetSection("RootConfiguration")["MigrationPath"];
+            var dbConnection = GetAuthDBConnection(configuration, serviceProvider, hasConnectionString);
             if (await rootConfiguration.ValidMigrationConfigurationPath(configuration))
             {
-                return await migrationService.RunMigration(GetAuthDBConnection(configuration), migrationPath);
+                return await migrationService.RunMigration(dbConnection, migrationPath);
             }
             return false;
         }
