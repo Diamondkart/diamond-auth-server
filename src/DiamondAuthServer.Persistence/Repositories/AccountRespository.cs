@@ -1,4 +1,4 @@
-﻿using DiamondAuthServer.ApplicationCore.Ports.Out;
+﻿using DiamondAuthServer.ApplicationCore.Ports.Out.IRepositories;
 using DiamondAuthServer.Domain.Entities;
 using DiamondAuthServer.Domain.Entities.SP;
 using DiamondAuthServer.Persistence.DBStorage;

@@ -1,6 +1,6 @@
 ﻿using DiamondAuthServer.Domain.Entities;
 
-namespace DiamondAuthServer.ApplicationCore.Ports.Out
+namespace DiamondAuthServer.ApplicationCore.Ports.Out.IRepositories
 {
     public interface IAccountRespository
     {

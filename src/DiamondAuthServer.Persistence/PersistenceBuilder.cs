@@ -1,4 +1,4 @@
-﻿using DiamondAuthServer.ApplicationCore.Ports.Out;
+﻿using DiamondAuthServer.ApplicationCore.Ports.Out.IRepositories;
 using DiamondAuthServer.Domain.Constants;
 using DiamondAuthServer.Persistence.DbMigration.interfaces;
 using DiamondAuthServer.Persistence.DbMigration.RootConfigurations;
