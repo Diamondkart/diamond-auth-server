@@ -49,5 +49,18 @@ namespace DiamondAuthServer.Persistence.Repositories
             var result = await _dBContext.Database.ExecuteSqlRawAsync(SP.Sp_UpdatePasswordAndPasswordTokenValidity, parameters);
             return result > 0;
         }
+
+        public async Task<UserDetail> CreateAccountAsync(UserDetail userDetail)
+        {
+            _dBContext.Users.Add(userDetail);
+            await _dBContext.SaveChangesAsync();
+            return userDetail;
+        }
+
+        public async Task<bool> CheckIfUserIsUnique(UserDetail userDetails)
+        {
+            var userExists = _dBContext.Users.Any(u => u.UserName == userDetails.UserName && u.FirstName == userDetails.FirstName && u.MobileNo == userDetails.MobileNo);
+            return userExists;
+        }
     }
 }

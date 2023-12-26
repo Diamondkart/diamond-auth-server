@@ -9,5 +9,6 @@ namespace DiamondAuthServer.Domain.Constants
     public class UserConstants
     {
         public const string ConnectionStringName = "UserDbConn";
+        public const string RecordExistsErrorMessage = "User already exist.";
     }
 }
