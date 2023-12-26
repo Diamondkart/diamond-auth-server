@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiamondAuthServer.Applicati
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiamondAuthServer.Domain", "src\DiamondAuthServer.Domain\DiamondAuthServer.Domain.csproj", "{3ED5310E-BB4F-4C7B-881C-243D2752DF93}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondAuthServer.WebAPI", "src\DiamondAuthServer.WebAPI\DiamondAuthServer.WebAPI.csproj", "{A869BA02-0778-40EF-9277-EE9CC146715E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiamondAuthServer.WebAPI", "src\DiamondAuthServer.WebAPI\DiamondAuthServer.WebAPI.csproj", "{A869BA02-0778-40EF-9277-EE9CC146715E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiamondIdentity", "src\DiamondIdentity\DiamondIdentity.csproj", "{B7039018-322C-457F-AC0C-7561DB6C0264}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{A869BA02-0778-40EF-9277-EE9CC146715E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A869BA02-0778-40EF-9277-EE9CC146715E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A869BA02-0778-40EF-9277-EE9CC146715E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B7039018-322C-457F-AC0C-7561DB6C0264}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7039018-322C-457F-AC0C-7561DB6C0264}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7039018-322C-457F-AC0C-7561DB6C0264}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7039018-322C-457F-AC0C-7561DB6C0264}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

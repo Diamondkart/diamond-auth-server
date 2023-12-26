@@ -7,13 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Duende.IdentityServer" Version="6.3.7" />
+    <PackageReference Include="Duende.IdentityServer.EntityFramework" Version="6.3.7" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.25" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\DiamondAuthServer.ApplicationCore\DiamondAuthServer.ApplicationCore.csproj" />
     <ProjectReference Include="..\DiamondAuthServer.Persistence\DiamondAuthServer.Persistence.csproj" />
+    <ProjectReference Include="..\DiamondIdentity\DiamondIdentity.csproj" />
   </ItemGroup>
 
   <ItemGroup>
