@@ -4,6 +4,7 @@ using DiamondAuthServer.Persistence;
 using DiamondAuthServer.WebAPI.Extensions;
 using DiamondIdentity.Configurations;
 using Duende.IdentityServer.Test;
+using Duende.IdentityServer.Validation;
 
 // start building configuration, host, etc ..
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,9 @@ builder.Services.AddIdentityServer()
         .AddInMemoryApiScopes(Config.ApiScopes)
         .AddInMemoryClients(Config.Clients)
         .AddTestUsers(Config.Users);
+/*        AddAspNetIdentity<ApplicationUser>()
+        .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();*/
+// ResourceOwnerPasswordValidator: to write the logic to verify username and password 
 
 builder.Services.AddAuthentication("Bearer")
         .AddJwtBearer("Bearer", options =>
