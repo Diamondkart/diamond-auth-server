@@ -1,0 +1,88 @@
+<mxfile host="app.diagrams.net" modified="2023-12-22T14:30:52.856Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:121.0) Gecko/20100101 Firefox/121.0" etag="66gmGRcTvaVxoBCMohKU" version="22.1.11" type="device">
+  <diagram name="Page-1" id="U4wrs3MwRlFztyGorx4x">
+    <mxGraphModel dx="880" dy="470" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-24" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="emqsTNmj0sGX-fFg9Jo2-1" target="emqsTNmj0sGX-fFg9Jo2-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-1" value="Web API Server" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="303" y="130" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-2" value="CQRS Handler" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="293" y="340" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="emqsTNmj0sGX-fFg9Jo2-3" target="emqsTNmj0sGX-fFg9Jo2-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-3" value="Domain" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="293" y="450" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-4" value="DB layer" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="293" y="560" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-6" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.6;entryY=0.017;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="352" y="400" as="sourcePoint" />
+            <mxPoint x="354" y="451" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="352" y="410" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-8" value="" style="endArrow=classic;html=1;rounded=0;entryX=0.6;entryY=0.017;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="350" y="510" as="sourcePoint" />
+            <mxPoint x="352" y="561" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="350" y="520" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-10" value="&lt;b&gt;DiamondKart Auth Server Flow&lt;br&gt;&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="240" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-16" value="End point=&amp;gt;Connect/token " style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="60" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-17" value="Dunde will provide it " style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="40" y="100" width="150" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-18" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.417;exitY=1.033;exitDx=0;exitDy=0;exitPerimeter=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="emqsTNmj0sGX-fFg9Jo2-1" target="emqsTNmj0sGX-fFg9Jo2-2">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="300" as="sourcePoint" />
+            <mxPoint x="330" y="250" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-21" value="" style="image;aspect=fixed;perimeter=ellipsePerimeter;html=1;align=center;shadow=0;dashed=0;spacingTop=3;image=img/lib/active_directory/generic_server.svg;" vertex="1" parent="1">
+          <mxGeometry x="90" y="205" width="28.000000000000004" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-22" value="&lt;b&gt;Auth Z&lt;/b&gt; =&amp;gt; Access token" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="50" y="260" width="150" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-23" value="Input- Id Token" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="160" width="130" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-26" value="" style="endArrow=classic;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="110" y="310" as="sourcePoint" />
+            <mxPoint x="110" y="380" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="110" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-28" value="&lt;b&gt;Microservies&lt;/b&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="70" y="390" width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-30" value="&lt;div&gt;I/p-&amp;nbsp; Username, Password,&lt;/div&gt;&lt;div&gt;&amp;nbsp;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="357" y="220" width="137" height="85" as="geometry" />
+        </mxCell>
+        <mxCell id="emqsTNmj0sGX-fFg9Jo2-31" value="O/p redirected url,&lt;div&gt;Client secret id, scope grant type&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="243" y="250" width="60" height="30" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
