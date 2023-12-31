@@ -14,6 +14,8 @@ namespace DiamondAuthServer.ApplicationCore.Ports.Out.IRepositories
 
         Task<bool> UpdatePasswordAndPasswordTokenValidityAsync(UserDetail user, ChangePassword changePassword);
         Task<UserDetail> CreateAccountAsync(UserDetail userDetail);
-        Task<bool> CheckIfUserIsUnique(UserDetail userDetails);
+        Task<bool> CheckIfUserIsUniqueAsync(UserDetail userDetails);
+        Task<UserDetail> GetUserByEmailAsync(string email);
+        Task<UserDetail> GetUserByIdAsync(Guid userId);
     }
 }

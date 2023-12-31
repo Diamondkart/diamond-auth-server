@@ -23,6 +23,9 @@ namespace DiamondAuthServer.Persistence
             services.AddScoped<IRootConfiguration, RootConfiguration>();
             services.AddScoped<ISQLDatabase, SQLDatabase>();
             services.AddScoped<IAccountRespository, AccountRespository>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IClientRepository, ClientRepository>();
+            services.AddScoped<IPermissionRepository, PermissionRepository>();
             return services;
         }
 

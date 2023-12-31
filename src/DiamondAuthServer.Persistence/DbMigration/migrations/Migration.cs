@@ -1,4 +1,5 @@
-﻿using Evolve;
+﻿using DiamondAuthServer.Domain.Exceptions;
+using Evolve;
 using System.Data;
 using System.Data.Common;
 using UserPlatform.Persistence.DbMigration.interfaces;
@@ -22,7 +23,8 @@ namespace UserPlatform.Persistence.DbMigration.migrations
             }
             catch (Exception ex)
             {
-                throw new EvolveException(migrationPath, ex);
+                throw new CustomEvolveException(migrationPath, ex);
+                //throw new EvolveException(migrationPath, ex);
             }
         }
     }

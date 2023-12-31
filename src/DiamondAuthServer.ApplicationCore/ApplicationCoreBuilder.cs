@@ -2,6 +2,7 @@
 using DiamondAuthServer.ApplicationCore.Ports.Out.IServices;
 using DiamondAuthServer.ApplicationCore.Queries;
 using DiamondAuthServer.ApplicationCore.Services;
+using Duende.IdentityServer.Stores;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DiamondAuthServer.ApplicationCore
@@ -15,6 +16,9 @@ namespace DiamondAuthServer.ApplicationCore
             services.AddScoped<ICommandDispatcher, CommandDispatcher>();
             services.AddScoped<IQueryDispatcher, QueryDispatcher>();
             services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAccountService, AccountService>();
+            services.AddScoped<IClientStore, CustomClientStore>();
+            services.AddScoped<IPermissionService, PermissionService>();
 
             return services;
         }

@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace DiamondAuthServer.Domain.Exceptions
 {
-    public class EvolveException: Exception
+    public class AuthenticationFailureException : Exception
     {
-        public EvolveException()
+        public AuthenticationFailureException()
         {
         }
 
-        public EvolveException(string message)
+        public AuthenticationFailureException(string message)
             : base(message)
         {
         }
 
-        public EvolveException(string message, Exception innerException)
+        public AuthenticationFailureException(string message, Exception innerException)
             : base(message, innerException)
         {
         }

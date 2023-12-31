@@ -4,6 +4,7 @@ using DiamondAuthServer.Domain.Entities.SP;
 using DiamondAuthServer.Persistence.DBStorage;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using static Duende.IdentityServer.Models.IdentityResources;
 
 namespace DiamondAuthServer.Persistence.Repositories
 {
@@ -57,10 +58,25 @@ namespace DiamondAuthServer.Persistence.Repositories
             return userDetail;
         }
 
-        public async Task<bool> CheckIfUserIsUnique(UserDetail userDetails)
+        public async Task<bool> CheckIfUserIsUniqueAsync(UserDetail userDetails)
         {
             var userExists = _dBContext.Users.Any(u => u.UserName == userDetails.UserName && u.FirstName == userDetails.FirstName && u.MobileNo == userDetails.MobileNo);
             return userExists;
+        }
+
+        public async Task<UserDetail> GetUserByEmailAsync(string email)
+        {
+            return await _dBContext.Users
+                .AsNoTracking()
+                .Where(u => u.Email.Equals(email))
+                ?.FirstOrDefaultAsync();
+        }
+        public async Task<UserDetail> GetUserByIdAsync(Guid userId)
+        {
+            return await _dBContext.Users
+                .AsNoTracking()
+                .Where(u => u.UserId.Equals(userId))
+                ?.FirstOrDefaultAsync();
         }
     }
 }

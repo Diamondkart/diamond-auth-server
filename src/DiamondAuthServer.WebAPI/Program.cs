@@ -1,4 +1,5 @@
 using DiamondAuthServer.ApplicationCore;
+using DiamondAuthServer.ApplicationCore.Services;
 using DiamondAuthServer.Domain.Exceptions;
 using DiamondAuthServer.Persistence;
 using DiamondAuthServer.WebAPI.Extensions;
@@ -12,12 +13,10 @@ builder.Host.ConfigureAppConfiguration(c => c.BuildConfiguration(args));
 
 builder.Services.AddIdentityServer()
         .AddDeveloperSigningCredential()
-        .AddInMemoryApiScopes(Config.ApiScopes)
-        .AddInMemoryClients(Config.Clients)
-        .AddTestUsers(Config.Users);
-/*        AddAspNetIdentity<ApplicationUser>()
-        .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>();*/
-// ResourceOwnerPasswordValidator: to write the logic to verify username and password 
+        .AddInMemoryApiScopes(AuthConfig.ApiScopes)
+        .AddClientStore<CustomClientStore>()
+        .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
+        .AddProfileService<ProfileService>();
 
 builder.Services.AddAuthentication("Bearer")
         .AddJwtBearer("Bearer", options =>
@@ -27,7 +26,7 @@ builder.Services.AddAuthentication("Bearer")
         });
 
 // Additional configuration for ASP.NET Core Identity if needed
-builder.Services.AddAuthentication();
+//builder.Services.AddAuthentication();
 
 // Add services to the container.
 
