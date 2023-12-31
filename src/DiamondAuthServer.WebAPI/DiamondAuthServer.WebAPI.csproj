@@ -20,8 +20,4 @@
     <ProjectReference Include="..\DiamondIdentity\DiamondIdentity.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="MigrationScripts\" />
-  </ItemGroup>
-
 </Project>

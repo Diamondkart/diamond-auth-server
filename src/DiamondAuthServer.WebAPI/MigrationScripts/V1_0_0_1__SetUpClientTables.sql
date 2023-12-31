@@ -1,0 +1,138 @@
+﻿
+USE [AuthDB]
+GO
+
+IF NOT EXISTS (SELECT 1 FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME = 'auth')
+BEGIN
+	declare @sqlCommand nvarchar(255);
+	declare @schemaName nvarchar(32)='auth';
+    SET @sqlCommand = CONCAT('CREATE SCHEMA', ' ', QUOTENAME(@schemaName))
+    EXEC sp_executesql @sqlCommand;
+END
+
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE auth.Client
+	(
+		ID						UNIQUEIDENTIFIER	NOT NULL	DEFAULT NEWSEQUENTIALID(),
+		[Name]					NVARCHAR(255)		NOT NULL,
+		ClientId				NVARCHAR(512)		NOT NULL,
+		ClientSecret			NVARCHAR(512)		NOT NULL,
+		ClientType				NVARCHAR(512)		NOT NULL	CHECK (ClientType IN('Confidential', 'Public')),
+		[Enabled]				BIT					NOT NULL	DEFAULT 1,
+		RequireClientSecret		BIT					NOT NULL	DEFAULT 1,
+		RequirePkce				BIT					NOT NULL	DEFAULT 1,
+		AllowOfflineAccess		NVARCHAR(256)		NULL,
+		CreatedOn				DATETIME			NOT NULL	DEFAULT GETUTCDATE(),
+		ModifiedOn				DATETIME			NOT NULL,
+		CONSTRAINT PK_CID PRIMARY KEY NONCLUSTERED (ID),
+	)
+
+GO
+
+CREATE NONCLUSTERED INDEX IX_ClientID  
+ON auth.Client (ClientID)
+
+GO
+
+
+CREATE TABLE auth.ClientGrantTypes
+(
+	ID			UNIQUEIDENTIFIER NOT NULL DEFAULT NEWSEQUENTIALID(),
+	[ClientID]	UNIQUEIDENTIFIER NOT NULL,
+	GrantType	NVARCHAR(512) NULL
+	CONSTRAINT PK_CGTID PRIMARY KEY NONCLUSTERED (ID),
+	CONSTRAINT FK_Client_ClientGrantTypes_ID FOREIGN KEY (ClientID)
+	REFERENCES [auth].[Client] (ID)
+)
+GO
+CREATE NONCLUSTERED INDEX IX_GrantType 
+		ON auth.ClientGrantTypes (GrantType)
+
+GO
+CREATE TABLE auth.ClientRedirectUris
+(
+	ID			UNIQUEIDENTIFIER	NOT NULL	DEFAULT NEWSEQUENTIALID(),
+	[ClientID]	UNIQUEIDENTIFIER	NOT NULL,
+	RedirectUri NVARCHAR(512)		NULL
+	CONSTRAINT PK_CRUID PRIMARY KEY NONCLUSTERED (ID),
+	CONSTRAINT FK_Client_ClientRedirectUris_ID FOREIGN KEY (ClientID)
+	REFERENCES [auth].[Client] (ID)
+)
+
+GO
+CREATE NONCLUSTERED INDEX IX_RedirectUri 
+		ON auth.ClientRedirectUris (RedirectUri)
+
+GO
+CREATE TABLE auth.ClientScopes
+(
+	ID			UNIQUEIDENTIFIER	NOT NULL	DEFAULT NEWSEQUENTIALID(),
+	[ClientID] UNIQUEIDENTIFIER NOT NULL,
+	Scope NVARCHAR(512) NULL
+	CONSTRAINT PK_CSID PRIMARY KEY NONCLUSTERED (ID),
+	CONSTRAINT FK_Client_ClientScopes_ID FOREIGN KEY (ClientID)
+			REFERENCES [auth].[Client] (ID)
+)
+
+GO
+CREATE NONCLUSTERED INDEX IX_Scope 
+		ON auth.ClientScopes (Scope)
+
+GO
+
+CREATE TABLE auth.ClientProperties
+(
+	ID			UNIQUEIDENTIFIER	NOT NULL	DEFAULT NEWSEQUENTIALID(),
+	[ClientID]	UNIQUEIDENTIFIER	NOT NULL,
+	Property	NVARCHAR(512)		NULL
+	CONSTRAINT PK_CPID PRIMARY KEY NONCLUSTERED (ID),
+	CONSTRAINT FK_Client_ClientProperties_ID FOREIGN KEY (ClientID)
+	REFERENCES [auth].[Client] (ID)
+)
+
+GO
+
+CREATE NONCLUSTERED INDEX IX_ClientProperties
+	ON auth.ClientProperties (Property)
+
+GO
+CREATE TABLE auth.Token
+(
+	ID							UNIQUEIDENTIFIER	NOT NULL	DEFAULT NEWSEQUENTIALID(),
+	[ClientID]					UNIQUEIDENTIFIER	NOT NULL,
+	[Name]						NVARCHAR(255)		NULL,
+	IdentityTokenLifetime		INT					NULL,
+	AccessTokenLifetime			INT					NULL,
+	AuthorizationCodeLifetime	INT					NULL,
+	IncludeJwtId				BIT					NOT NULL	DEFAULT 1
+	CONSTRAINT PK_TID PRIMARY KEY NONCLUSTERED (ID)
+	CONSTRAINT FK_Client_Token_ID FOREIGN KEY (ClientID)
+	REFERENCES [auth].[Client] (ID)
+)
+
+GO
+
+CREATE TABLE auth.RefreshToken
+(
+	ID									UNIQUEIDENTIFIER	NOT NULL	DEFAULT NEWSEQUENTIALID(),
+	[ClientID]							UNIQUEIDENTIFIER	NOT NULL,
+	[Name]								NVARCHAR(255)		NULL,
+	AbsoluteRefreshTokenLifetime		INT					NULL,
+	SlidingRefreshTokenLifetime			INT					NULL,
+	RefreshTokenUsage					NVARCHAR(512)		NOT NULL	CHECK (RefreshTokenUsage IN('ReUse', 'OneTime')),
+	RefreshTokenExpiration				NVARCHAR(512)		NOT NULL	CHECK (RefreshTokenExpiration IN('Absolute', 'Sliding')),
+	UpdateAccessTokenClaimsOnRefresh	BIT					NOT NULL	DEFAULT 1
+	CONSTRAINT PK_RTID PRIMARY KEY NONCLUSTERED (ID)
+	CONSTRAINT FK_Client_RefreshToken_ID FOREIGN KEY (ClientID)
+	REFERENCES [auth].[Client] (ID)
+)
+
+GO
+
