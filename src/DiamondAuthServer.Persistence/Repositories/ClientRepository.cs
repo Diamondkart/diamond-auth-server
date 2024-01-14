@@ -30,15 +30,15 @@ namespace DiamondAuthServer.Persistence.Repositories
                         if (!clientMap.ContainsKey(cl.ClientId))
                         {
                             cl.GrantTypes = new List<ClientGrantType> { new ClientGrantType { GrantType=gt.GrantType } };
-                            cl.Scopes = new List<ClientScope> { new ClientScope { Scope = sc.Scope } };
+                            cl.Scopes = new List<ClientScope> { new ClientScope { Scope = sc?.Scope } };
                             clientMap.Add(cl.ClientId, cl);
                         }
                         else
                         {
                             clientMap[cl.ClientId].GrantTypes.Add(new ClientGrantType { GrantType = gt.GrantType });
-                            clientMap[cl.ClientId].Scopes.Add(new ClientScope { Scope = sc.Scope });
+                            clientMap[cl.ClientId].Scopes.Add(new ClientScope { Scope = sc?.Scope });
                             clientMap[cl.ClientId].GrantTypes = clientMap[cl.ClientId].GrantTypes.DistinctBy(x => x.GrantType).ToList();
-                            clientMap[cl.ClientId].Scopes = clientMap[cl.ClientId].Scopes.DistinctBy(x => x.Scope).ToList();
+                            clientMap[cl.ClientId].Scopes = clientMap[cl.ClientId].Scopes.DistinctBy(x => x?.Scope).ToList();
                         }
                         
                         return cl;

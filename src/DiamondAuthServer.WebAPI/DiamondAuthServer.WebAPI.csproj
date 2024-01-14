@@ -17,7 +17,6 @@
   <ItemGroup>
     <ProjectReference Include="..\DiamondAuthServer.ApplicationCore\DiamondAuthServer.ApplicationCore.csproj" />
     <ProjectReference Include="..\DiamondAuthServer.Persistence\DiamondAuthServer.Persistence.csproj" />
-    <ProjectReference Include="..\DiamondIdentity\DiamondIdentity.csproj" />
   </ItemGroup>
 
 </Project>

@@ -3,9 +3,6 @@ using DiamondAuthServer.ApplicationCore.Services;
 using DiamondAuthServer.Domain.Exceptions;
 using DiamondAuthServer.Persistence;
 using DiamondAuthServer.WebAPI.Extensions;
-using DiamondIdentity.Configurations;
-using Duende.IdentityServer.Test;
-using Duende.IdentityServer.Validation;
 
 // start building configuration, host, etc ..
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +11,7 @@ builder.Host.ConfigureAppConfiguration(c => c.BuildConfiguration(args));
 builder.Services.AddIdentityServer()
         .AddDeveloperSigningCredential()
         .AddInMemoryApiScopes(AuthConfig.ApiScopes)
+        .AddInMemoryApiResources(AuthConfig.ApiResources)
         .AddClientStore<CustomClientStore>()
         .AddResourceOwnerValidator<ResourceOwnerPasswordValidator>()
         .AddProfileService<ProfileService>();
@@ -21,17 +19,21 @@ builder.Services.AddIdentityServer()
 builder.Services.AddAuthentication("Bearer")
         .AddJwtBearer("Bearer", options =>
         {
-            options.Authority = "https://localhost:5001";
-            options.Audience = "api1";
+            options.Authority = "https://localhost:8000";
+            options.Audience = "https://localhost:8000/resources";
+            options.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters
+            {
+                ClockSkew = new TimeSpan(0, 5, 0),
+                ValidateLifetime = true,
+                RequireSignedTokens = true,
+                SaveSigninToken = true,
+                ValidateIssuer = true,
+                ValidateAudience = false
+            };
         });
 
-// Additional configuration for ASP.NET Core Identity if needed
-//builder.Services.AddAuthentication();
-
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddConnectionString(builder.Configuration);

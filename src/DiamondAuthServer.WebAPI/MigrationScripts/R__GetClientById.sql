@@ -17,9 +17,9 @@ BEGIN
 	ON		c.ID=cgt.ClientId
 	JOIN	auth.GrantTypes gt 
 	ON		cgt.GrantType=gt.ID
-	JOIN	auth.ClientScopes cs 
+	LEFT	JOIN	auth.ClientScopes cs 
 	ON		c.ID=cs.ClientId
-	JOIN	auth.Scopes s 
+	LEFT	JOIN	auth.Scopes s 
 	ON		cs.Scope=s.ID
 	WHERE	c.ClientId=@clientId
 END

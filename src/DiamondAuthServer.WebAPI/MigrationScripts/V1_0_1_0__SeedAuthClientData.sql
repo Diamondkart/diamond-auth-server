@@ -21,6 +21,7 @@ values
 ('c58d5cab-e9fb-4272-97a7-775c88ec3de6', 'address'),
 ('49ea0664-7180-44cf-9852-29fee5216bea', 'phone'),
 ('dbff9486-5d01-4dba-845e-6f770fa08baf', 'offline_access'),
+('88cf0607-844e-47f8-a1f4-18f22b98fb7d', 'user.readAll'),
 ('100c75df-332a-4a2c-9399-12a880031a57','provisionz');
 
 GO
@@ -28,14 +29,17 @@ GO
 INSERT INTO auth.Client(ID, [Name], ClientId, ClientSecret, ClientType, [Enabled], RequireClientSecret, AlwaysIncludeUserClaimsInIdToken) 
 values
 ('9c6db90a-8925-486b-bf99-c6ede057ad38', 'Auth', 'auth-ropc-9c6db90a-8925-486b-bf99-c6ede057ad38', 'K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols=', 'Confidential',1, 1, 1),
-('AD3B392C-F5A7-EE11-8EB8-70CF49E6D35F', 'Authz', 'InternalClientz', 'K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols=', 'Confidential',1, 1, 0);
+('AD3B392C-F5A7-EE11-8EB8-70CF49E6D35F', 'Authz', 'InternalClientz', 'K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols=', 'Confidential',1, 1, 0),
+('2aa87df2-62e1-46b6-b662-eeeaedd0ae1b', 'AuthCode', 'auth-code-2aa87df2-62e1-46b6-b662-eeeaedd0ae1b', 'K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols=', 'Confidential',1, 1,0),
+('a057bd84-536c-4c65-b214-7d9ec268e888', 'UserPlatform', 'user-a057bd84-536c-4c65-b214-7d9ec268e888', 'K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols=', 'Confidential',1, 1,0);
 
 GO
 
 INSERT INTO auth.ClientGrantTypes(ClientID, GrantType) 
 values
 ('9c6db90a-8925-486b-bf99-c6ede057ad38', '8030bfe5-11e6-4456-b528-04b05c318f1d'),
-('AD3B392C-F5A7-EE11-8EB8-70CF49E6D35F', 'caf12047-f19e-4889-b3af-3c67ee707a80');
+('AD3B392C-F5A7-EE11-8EB8-70CF49E6D35F', 'caf12047-f19e-4889-b3af-3c67ee707a80'),
+('2aa87df2-62e1-46b6-b662-eeeaedd0ae1b', '7c293d79-2d50-4da5-b71d-f4ce15900676');
 
 GO
 

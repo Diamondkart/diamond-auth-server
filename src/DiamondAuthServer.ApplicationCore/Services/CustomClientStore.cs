@@ -1,9 +1,7 @@
 ﻿using DiamondAuthServer.ApplicationCore.Ports.Out.IRepositories;
 using DiamondAuthServer.ApplicationCore.Ports.Out.IServices;
-using Duende.IdentityServer;
 using Duende.IdentityServer.Models;
 using Duende.IdentityServer.Stores;
-using System.Text;
 
 namespace DiamondAuthServer.ApplicationCore.Services
 {
@@ -17,14 +15,11 @@ namespace DiamondAuthServer.ApplicationCore.Services
             _clientRepository = clientRepository;
         }
 
-        
-
         public async Task<Client?> FindClientByIdAsync(string clientId)
         {
             var clientEntity = await _clientRepository.GetClientByIdAsync(clientId);
             if (clientEntity != null)
             {
-                
                 // Map the clientEntity to a Client object
                 var client = new Client
                 {
@@ -38,7 +33,7 @@ namespace DiamondAuthServer.ApplicationCore.Services
                     PostLogoutRedirectUris = { },
                     AlwaysIncludeUserClaimsInIdToken = clientEntity.AlwaysIncludeUserClaimsInIdToken,
                     AllowOfflineAccess = true,
-                    AllowedScopes = clientEntity.Scopes.Select(s => s.Scope).ToList()
+                    AllowedScopes = clientEntity.Scopes.Select(s => s.Scope).ToList(),
                 };
 
                 return client;
